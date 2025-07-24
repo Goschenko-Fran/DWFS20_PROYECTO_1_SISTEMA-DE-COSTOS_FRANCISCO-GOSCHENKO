@@ -28,5 +28,30 @@ Algoritmo SistemaDeCostosZapateriaOnline
 	Escribir  "Ingresa el numero que quieres adquirir:"
 	Leer Cantidad_Unidades 
 	
+	// Solicitud de cupon de descuento.
+	Escribir "¿Tienes un cupon de Descuento?, contesta usando minusculas -si- o -no-"
+	Leer Respuesta_Cupon
+	// NO TIENE CUPON.
+	Si Respuesta_Cupon = "no" Entonces
+		Escribir "** TRANQUILO, te enviaremos uno para tu proxima compra **"
+	FinSi
+	// SI TIENE CUPON.
+	Si Respuesta_Cupon = "si" Entonces
+		Escribir "** GENIAL **"
+		Escribir "Ingresa tu CODIGO, recuerda usar solo minusculas" // Codigo es sale10%
+		Leer Codigo_Descuento
+		Si Codigo_Descuento = "sale10%" Entonces
+			Escribir "** FABULOSO, YA TIENES TU CUPON ACTIVADO " PORCENTAJE_CUPON *100 "% **"
+		SiNo // Que pasa cuando NO tiene
+			Escribir "CODIGO INCORRECTO, lee tu codigo y escribelo en letras minusculas nuevamente."	
+		FinSi
+	FinSi
+	// Validar respuesta de cupon.
+	Si Respuesta_Cupon <> "si" y Respuesta_Cupon <> "no" Entonces
+		Escribir "Debes contestar: -si- o no-"
+		Escribir "En minusculas como se muestra en pantalla" 
+		Leer Respuesta_Cupon
+	FinSi
+	
 FinAlgoritmo
 
