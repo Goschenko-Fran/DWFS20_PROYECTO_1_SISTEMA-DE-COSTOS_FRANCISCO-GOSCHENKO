@@ -53,5 +53,63 @@ Algoritmo SistemaDeCostosZapateriaOnline
 		Leer Respuesta_Cupon
 	FinSi
 	
+	Escribir ""
+	Escribir  "** LISTO STOCK VERIFICADO **"
+	Escribir ""
+	
+	// Aplicar el descuento de cupon.
+	Si Respuesta_Cupon = "si" Entonces
+		Descuento_Cupon <- PRECIO_ORIGINAL * PORCENTAJE_CUPON
+		// Escribir  Descuento_Cupon 
+		Subtotal_Cupon <- PRECIO_ORIGINAL - Descuento_Cupon
+		// Escribir Subtotal_Cupon 
+	SiNo
+		Subtotal_Cupon = 0
+		// Escribir Subtotal_Cupon 
+	FinSi
+	
+	// Aplicar Impuestos.
+	Si Respuesta_Cupon = "si" Entonces
+		Impuestos <- Subtotal_Cupon * IVA
+		// Escribir Impuestos 
+		Subtotal_Impuestos <- Subtotal_Cupon + Impuestos
+		// Escribir Subtotal_Impuestos 
+	SiNo
+		Impuestos <- PRECIO_ORIGINAL * IVA
+		// Escribir Impuestos 
+		Subtotal_Impuestos <- PRECIO_ORIGINAL + Impuestos
+		// Escribir Subtotal_Impuestos 
+	FinSi
+	
+	// Aplicar el descuento por cantidad 5%
+	Si Cantidad_Unidades >= 2 Entonces
+		Descuento_Cantidad <- Subtotal_Impuestos * PORCENTAJE_CANTIDAD
+		// Escribir Descuento_Cantidad 
+	SiNo
+		Si Cantidad_Unidades < 2 Entonces
+			Descuento_Cantidad = 0
+			// Escribir Descuento_Cantidad 
+		FinSi
+	FinSi
+	Subtotal_Cantidad <- (Subtotal_Impuestos - Descuento_Cantidad)
+	// Escribir  Subtotal_Cantidad 
+	
+	Escribir "------------------------------------------"
+	Escribir "INFORMACION DE ENVIO: "
+	
+	//Calcular costo de Envio.
+	Escribir "Ingresa tu direccion para envio: Ciudad / Calle / Edificio / Depto. "
+	Leer Destino_Envio
+	Escribir ""
+	Escribir "*** CALCULANDO ENVIO ***"
+	Escribir "Envio Confirmado, tu compra llegara en 5 dias Habiles"
+	Escribir ""
+	Escribir "------ ***** PROCESANDO INFORMACION DE COMPRA ***** ------"
+	Envio <- COSTO_FIJO + (VALOR_KG * KG_ZAPATO * Cantidad_Unidades)
+	// Escribir Envio 
+	Subtotal_Envio <- (Subtotal_Cantidad * Cantidad_Unidades) + Envio
+	// Escribir Subtotal_Envio
+	Escribir  Subtotal_Envio
+	
 FinAlgoritmo
 
