@@ -1,4 +1,4 @@
-README - SistemaDeCostosZapateriaOnlin
+README - SistemaDeCostosZapateriaOnline
 
 📋 Descripción General
 Este proyecto simula un sistema de compras en línea para una zapatería. El algoritmo permite calcular automáticamente el costo final de una compra considerando descuentos por cupones, descuentos por cantidad, impuestos y costos de envío.
